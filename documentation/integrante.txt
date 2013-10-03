@@ -1,0 +1,5 @@
+
+integrante.txt: Nome, matrícula e período da disciplina.
+
+Jozias Rolim de Araújo Junior - 20122370427 - 2ºPeríodo
+Geferson Ribeiro Dias - 20122370435 - 2ºPeríodo

@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>League of legends</title>
+  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+ 
+  <style type="text/css">
+  #contactform {
+ 
+    width: 500px;
+    padding: 20px;
+    background: #f0f0f0;
+    overflow:auto;
+ 
+    /* Border style */
+    border: 1px solid #cccccc;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px; 
+ 
+    /* Border Shadow */
+    -moz-box-shadow: 2px 2px 2px #cccccc;
+    -webkit-box-shadow: 2px 2px 2px #cccccc;
+    box-shadow: 2px 2px 2px #cccccc;
+ 
+    }
+
+    label {
+    font-family: Arial, Verdana;
+    text-shadow: 2px 2px 2px #ccc;
+    display: block;
+    float: left; margin-right:15px;
+    font-weight: bold;
+    margin-right:10px;
+    text-align: right;
+    width: 120px;
+    line-height: 25px;
+    font-size: 15px;
+    }
+
+    .input{
+    font-family: Arial, Verdana;
+    font-size: 15px;
+    padding: 5px;
+    border: 1px solid #b9bdc1;
+    width: 300px;
+    color: #797979;
+    }
+
+    .hint{
+    display:none;
+    }
+    .button{
+    float: right; margin-left:15px;
+    margin:10px 55px 10px 0;
+    font-weight: bold;
+    line-height: 1;
+    padding: 6px 10px;
+    cursor:pointer;
+    color: #fff;
+ 
+    text-align: center;
+    text-shadow: 0 -1px 1px #64799e;
+ 
+    /* Background gradient */
+    background: #a5b8da;
+    background: -moz-linear-gradient
+       (top, #a5b8da 0%, #7089b3 100%);
+    background: -webkit-gradient
+       (linear, 0% 0%, 0% 100%,
+       from(#a5b8da), to(#7089b3));
+ 
+    /* Border style */
+    border: 1px solid #5c6f91;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+ 
+    /* Box shadow */
+    -moz-box-shadow: inset 0 1px 0 0 #aec3e5;
+    -webkit-box-shadow: inset 0 1px 0 0 #aec3e5;
+    box-shadow: inset 0 1px 0 0 #aec3e5;
+ 
+    }
+
+  </style>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+  <div id="main">
+    <header>
+      <div id="logo">
+        <div id="logo_text">
+          <h1><a href="index.html">Mago7<span class="logo_colour">lol</span></a></h1>
+          <h2>Uma visão geral do melhor jogo do mundo!</h2>
+        </div>
+      </div>
+      <nav>
+        <ul class="sf-menu" id="nav">
+          <li><a href="index.html">Inicio</a></li>
+          <li ><a href="personagem.html">Personagens</a></li>
+          <li><a href="itens.html">Itens</a></li>
+          <li ><a href="mapas.html">Mapas</a></li>
+          <li><a href="#">Players</a>
+            <ul>
+              <li><a href="http://www.lolking.net/summoner/br/589235">Mago7</a></li>
+              <li><a href="http://www.lolking.net/summoner/br/598515">Mocotinha</a></li>
+            </ul>
+            </li>
+          <li class="selected"><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="site_content">
+      
+      <div id="content">
+        <h1>Contato</h1>
+        <form id ="contactform" action="" onsubmit="return validate()">
+          <label for = "nome">Nome:</label><input type ="text" class= "input" id="nome" placeholder = "Seu Nome Completo"><br>
+          <label for = "cpf">CPF:</label><input type="text" class= "input" id="cpf" placeholder = "000.000.000-00 ou 00000000000" required><br>
+          <label for = "cep">CEP:</label><input type="text" class= "input" name="cep" onchange = "CEP()" id="cep" placeholder = "000000-00 ou 00000000" required><br>
+          <label for = "rua">Rua:</label><input type="text" class= "input" id="result" placeholder = "Rua definida pelo CEP" disabled><br>
+          <label for ="msg">Mensagem:</label><textarea name="Mensagem"class= "input textarea"  id="texto" cols="30" rows="10"></textarea><br>
+
+          <input type="submit" class="button" value="Enviar"><i class="icon-refresh icon-spin"></i><br>
+        </form>
+
+        <script type="text/javascript">
+        var xmlhttp;
+        var data;
+        var loading = document.querySelector(".icon-refresh");
+        loading.style.visibility = "hidden";
+
+        function CEP(){
+          var cep = document.querySelector("#cep").value;
+          var url = "http://cep.republicavirtual.com.br/web_cep.php?cep="+cep+"&formato=json";
+          createXHR();
+
+          xmlhttp.open("GET",url,true);
+          xmlhttp.onreadystatechange=function(){
+            if (xmlhttp.readyState==4 && xmlhttp.status==200){
+              data=JSON.parse(xmlhttp.responseText);
+              console.log(data);
+              var showAddress = "Rua "+data.logradouro;
+              document.querySelector("#result").value = showAddress;
+              loading.style.visibility = "hidden";
+            }
+          }
+          xmlhttp.send();
+          loading.style.visibility = "visible";
+
+          
+        }
+
+        function createXHR(){
+          if (window.XMLHttpRequest)
+            {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+            }
+          else
+            {// code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+
+        </script>
+
+        
+        <script>
+          function validate(){
+            var cpfElement = document.querySelector("#cpf");
+            var cepElement = document.querySelector("#cep");
+            if(/\d{3}(\.\d{3}){2}-\d{2}|\d{11}/.test(cpfElement.value) && /\d{5}-\d{3}|\d{8}/.test(cepElement.value)){
+              return true;
+            }else if(/\d{3}(\.\d{3}){2}-\d{2}|\d{11}/.test(cpfElement.value)){
+              alert("O CEP está inválido");
+              cepElement.focus();
+              return false;
+            }else{
+              alert("O CPF está inválido");
+              cpfElement.focus();
+              return false;
+            }
+          }
+        </script>  
+      </div>
+    </div>
+    <footer>
+      <p>Copyright &copy; Mocotinha & Mago7 | <a href="http://beta.leagueoflegends.com">League of Legends Oficial</a></p>
+    </footer>
+  </div>
+  
+  <script type="text/javascript" src="js/jquery.js"></script>
+  
+  <script type="text/javascript" src="js/jquery.sooperfish.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('ul.sf-menu').sooperfish();
+    });
+  </script>
+ 
+</body>
+</html>

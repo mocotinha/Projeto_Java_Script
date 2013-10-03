@@ -1,0 +1,5 @@
+funcionalidade.txt: Explicação do que é o site e suas principais funcionalidades;
+
+
+O site é apenas uma fã page do jogo League of Legends, desenvolvido para ambito academico pelos alunos do curso de TSI do IFPB, 
+na disciplina de Linguagem de Script, tenho como principal função apresentar o conteudo visto em sala de aula.

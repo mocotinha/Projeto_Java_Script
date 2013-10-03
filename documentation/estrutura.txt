@@ -1,0 +1,10 @@
+estrutura.txt: Descrição da estrutura do site através dos principais diretórios e arquivos 
+utilizados;
+
+Pasta                     conteúdo
+css				    arquivos de estilo (style.css)
+documentation       arquivos solicitados para o projeto(estrutura.txt,funcionalidade.txt,integrante.txt)
+font                arquivos de fontes utilizados pelo site (YanoneKaffeesatz-Regular e NewsCycle-Regular)
+images              imagens utilizadas no site(1 ~ 14.jpg e outras para designer)
+js                  arquivos de javascript(image_fade,modernizr-1.5.min, jquery.sooperfish, jquery.kwicks-1.5.1, jquery.easing-sooper, e o jquery)
+raiz                paginas do site (index, contato, itens, personagens, mapas)
